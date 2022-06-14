@@ -1,17 +1,17 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import GlobalStateContext from "../global/GlobalStateContext";
+import { GlobalStateContext } from "../global/GlobalStateContext";
 import { goToAdressPage } from "../routes/cordinator";
-import { convertCPF } from "../utils/convertCPF";
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
+
   const navigate = useNavigate();
 
   const context = useContext(GlobalStateContext);
 
-  const { signUp } = context.states;
+  const { signUp, checker } = context.states;
 
-  const { setSignUp } = context.setters;
+  const { setSignUp, setChecker } = context.setters;
 
   const { postSignUp } = context.posts;
 
@@ -19,10 +19,14 @@ function SignupPage() {
     setSignUp({ ...signUp, [e.target.name]: e.target.value });
   };
 
+  const onChangeChecker = (e) => {
+    setChecker({ ...checker, [e.target.name]: e.target.value });
+  };
+
   const register = (e) => {
     e.preventDefault();
     postSignUp();
-    goToAdressPage(navigate);
+    goToAdressPage(navigate)
   };
 
   return (
@@ -40,10 +44,18 @@ function SignupPage() {
           onChange={onChangeSignUp}
           required
         />
-
+        <br />
         <label htmlFor="email">Email*</label>
-        <input id="email" placeholder="email@email.com" name="email" required />
+        <input
+          id="email"
+          placeholder="email@email.com"
+          name="email"
+          value={checker.email}
+          onChange={onChangeChecker}
+          required
+        />
 
+        <br />
         <label htmlFor="email">Email*</label>
         <input
           id="email"
@@ -54,9 +66,12 @@ function SignupPage() {
           onChange={onChangeSignUp}
           required
         />
+        {checker.email !== signUp.email && <p>repita o mesmo email</p>}
+        <br />
 
         <label htmlFor="cpf">CPF*</label>
         <input
+        pattern=""
           id="cpf"
           placeholder="Somente números"
           name="cpf"
@@ -65,16 +80,18 @@ function SignupPage() {
           onChange={onChangeSignUp}
           required
         />
-
+        <br />
         <label htmlFor="password">Senha*</label>
         <input
           id="password"
           placeholder="Inserir senha"
           type="password"
           name="password"
+          value={checker.password}
+          onChange={onChangeChecker}
           required
         />
-
+        <br />
         <label htmlFor="password">Senha*</label>
         <input
           id="password"
@@ -85,8 +102,10 @@ function SignupPage() {
           onChange={onChangeSignUp}
           required
         />
+        {checker.password !== signUp.password && <p>repita a mesma senha</p>}
 
-        <button type="submit">Cadastrar</button>
+        <br />
+        {checker.password === signUp.password && checker.email === signUp.email ? <button type="submit">Cadastrar</button> : <button disabled>Cadastrar</button>}
       </form>
     </>
   );

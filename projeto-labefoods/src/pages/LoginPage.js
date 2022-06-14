@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import GlobalStateContext from "../global/GlobalStateContext";
-import { goToSignUpPage } from "../routes/cordinator";
+import { GlobalStateContext } from "../global/GlobalStateContext";
+import { goToHomePage, goToSignUpPage } from "../routes/cordinator";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ function LoginPage() {
   const signIn = (e) => {
     e.preventDefault();
     postLogin();
+    goToHomePage(navigate)
   };
 
   return (
@@ -38,6 +39,7 @@ function LoginPage() {
           onChange={onChangeLogin}
           required
         />
+        <br />
         <label htmlFor="password">Senha</label>
         <input
           id="password"
@@ -47,10 +49,11 @@ function LoginPage() {
           onChange={onChangeLogin}
           required
         />
+        <br />
         <button type="submit">Entrar</button>
       </form>
-
       <span>Não possui cadastro?</span>
+      <br />
       <button onClick={() => goToSignUpPage(navigate)}> Clique aqui.</button>
     </>
   );
