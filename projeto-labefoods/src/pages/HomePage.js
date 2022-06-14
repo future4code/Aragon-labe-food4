@@ -1,30 +1,71 @@
-import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { GlobalStateContext } from "../global/GlobalStateContext"
-import { goToAdressPage } from "../routes/cordinator"
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import RestaurantCard from "../components/RestaurantCard";
+import { GlobalStateContext } from "../global/GlobalStateContext";
+import { goToAddressPage, goToHomePage, goToLoginPage } from "../routes/cordinator";
 
 function HomePage() {
+  const context = useContext(GlobalStateContext);
 
-    const context = useContext(GlobalStateContext)
+  const { profile, restaurants } = context.states;
 
-    const { profile } = context.states
+  const { getProfile, getRestaurants } = context.getters;
 
-    const { getProfile } = context.getters
+  const [ search, setSearch ] = useState("")
 
-    useEffect(() => { getProfile() }, [])
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (profile.user.hasAddress === false) {
-            goToAdressPage(navigate)
-        }
-    })
+  const token = localStorage.getItem("token")
 
+  useEffect(() => {
+    if(!token) {
+        goToLoginPage(navigate)
+    }
+  }, []);
+
+  useEffect(() => {
+    getProfile();
+    getRestaurants()
+  },[]);
+
+//   useEffect(() => {
+//     if(profile.user?.hasAddress === true) {
+//         goToHomePage(navigate)
+//     } else if (profile.user?.hasAddress !== true) {
+//         goToAddressPage(navigate);
+//       }
+//   },[])
+
+  const onChangeSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const showRestaurants = restaurants? restaurants
+  .filter((restaurant) => {
+   const textSearch = search.toLowerCase()
+   const restaurantsFiltered = restaurant.name.toLowerCase()
+   const descriptionFiltered = restaurant.description.toLowerCase()
+   return restaurantsFiltered.includes(textSearch) || descriptionFiltered.includes(textSearch)
+  })
+  .map((restaurant) => {
     return (
-        <>
-            HomePage
-        </>
+        <RestaurantCard 
+        key={restaurant.id} 
+        restaurant={restaurant}
+        />
     )
+  }):<p>carregando...</p>
+
+  return (
+    <>
+    <input 
+    placeholder="Pesquisar Restaurante" 
+    value={search}
+    onChange={onChangeSearch}
+    />
+    {showRestaurants}
+    </>
+  )
 }
 
-export default HomePage
+export default HomePage;

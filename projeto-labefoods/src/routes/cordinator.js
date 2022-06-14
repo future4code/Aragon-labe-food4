@@ -18,7 +18,7 @@ export const goToProfilePage = (navigate) => {
     navigate("/profile")
 }
 
-export const goToAdressPage = (navigate) => {
+export const goToAddressPage = (navigate) => {
     navigate("/address")
 }
 

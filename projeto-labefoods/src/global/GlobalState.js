@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from "../constants/urls";
-import { goToAdressPage } from "../routes/cordinator";
 import { convertCPF } from "../utils/convertCPF";
 import { GlobalStateContext } from "./GlobalStateContext";
 
@@ -29,20 +28,32 @@ function GlobalState(props) {
     "complement": ""
   })
 
+  const [ restaurants, setRestaurants ] = useState([])
+
   const states = {
     login: login,
     signUp: signUp,
     checker: checker,
     address: address,
-    profile: profile
+    profile: profile,
+    restaurants: restaurants
   };
 
   const setters = {
     setLogin: setLogin,
     setSignUp: setSignUp,
     setChecker: setChecker,
-    setAddress: setAddress
+    setAddress: setAddress,
+    setRestaurants: setRestaurants
   };
+
+  const token = localStorage.getItem("token")
+
+  const headers = {
+    headers: {
+      auth: token
+    }
+  }
 
   const postLogin = () => {
     axios
@@ -70,14 +81,8 @@ function GlobalState(props) {
       });
   };
 
-  const token = localStorage.getItem("token")
-
   const addAddress = () => {
-    axios.put(`${BASE_URL}/address`, address, {
-      headers: {
-        auth: token
-      }
-    })
+    axios.put(`${BASE_URL}/address`, address, headers)
       .then((res) => {
         localStorage.setItem("token", res.data.token)
       })
@@ -95,21 +100,31 @@ function GlobalState(props) {
   }
 
   const getProfile = () => {
-    axios.get(`${BASE_URL}/profile`, {
-      headers: { auth: token }
-
-    })
+    axios.get(`${BASE_URL}/profile`, headers)
       .then((res) => {
-        console.log(res.data)
-
+        setProfile(res.data)
+        console.log(res.data.user.hasAddress)
       })
       .catch((err) => {
         console.log(err.response)
       })
   }
 
+  const getRestaurants = () => {
+    axios
+    .get(`${BASE_URL}/restaurants`, headers)
+    .then((res) => {
+      setRestaurants(res.data?.restaurants)
+      console.log(res.data.restaurants)
+    })
+    .catch((err) => {
+      console.log(err.response)
+    })
+  }
+
   const getters = {
-    getProfile: getProfile
+    getProfile: getProfile,
+    getRestaurants: getRestaurants
   }
 
   const context = { states, setters, posts, puts, getters };

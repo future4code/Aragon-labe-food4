@@ -3,7 +3,7 @@ import { GlobalStateContext } from "../global/GlobalStateContext";
 import { goToHomePage } from "../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 
-function AdressPage() {
+function AddressPage() {
 
     const context = useContext(GlobalStateContext)
 
@@ -52,14 +52,13 @@ function AdressPage() {
                 />
                 <br />
                 <label htmlFor="complement">
-                    *Complemento
+                    Complemento
                 </label>
                 <input
                     id="complement"
                     name="complement"
                     value={address.complement}
                     onChange={onChangeAddress}
-                    required
                 />
                 <br />
                 <label htmlFor="neighbourhood">
@@ -100,4 +99,4 @@ function AdressPage() {
     )
 }
 
-export default AdressPage
+export default AddressPage
