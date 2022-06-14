@@ -71,6 +71,7 @@ function SignupPage() {
 
         <label htmlFor="cpf">CPF*</label>
         <input
+        pattern=""
           id="cpf"
           placeholder="Somente números"
           name="cpf"

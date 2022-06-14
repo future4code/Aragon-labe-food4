@@ -16,6 +16,8 @@ function GlobalState(props) {
     password: "",
   });
 
+  const [profile, setProfile] = useState({})
+
   const [checker, setChecker] = useState({ email: "", password: "" })
 
   const [address, setAddress] = useState({
@@ -31,7 +33,8 @@ function GlobalState(props) {
     login: login,
     signUp: signUp,
     checker: checker,
-    address: address
+    address: address,
+    profile: profile
   };
 
   const setters = {
@@ -76,7 +79,7 @@ function GlobalState(props) {
       }
     })
       .then((res) => {
-        localStorage.setItem("newToken", res.data.token)
+        localStorage.setItem("token", res.data.token)
       })
       .catch((err) => {
         console.log(err.response)
@@ -91,9 +94,25 @@ function GlobalState(props) {
     addAddress: addAddress
   }
 
-  //   const getters = {}
+  const getProfile = () => {
+    axios.get(`${BASE_URL}/profile`, {
+      headers: { auth: token }
 
-  const context = { states, setters, posts, puts };
+    })
+      .then((res) => {
+        console.log(res.data)
+
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+  }
+
+  const getters = {
+    getProfile: getProfile
+  }
+
+  const context = { states, setters, posts, puts, getters };
 
   return (
     <GlobalStateContext.Provider value={context}>
