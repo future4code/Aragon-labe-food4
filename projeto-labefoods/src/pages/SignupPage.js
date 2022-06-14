@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToAdressPage } from "../routes/cordinator";
+import { goToAddressPage } from "../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
@@ -26,7 +26,7 @@ function SignupPage() {
   const register = (e) => {
     e.preventDefault();
     postSignUp();
-    goToAdressPage(navigate)
+    goToAddressPage(navigate)
   };
 
   return (
