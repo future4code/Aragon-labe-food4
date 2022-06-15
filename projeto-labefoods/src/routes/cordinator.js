@@ -22,22 +22,26 @@ export const goToAddressPage = (navigate) => {
     navigate("/address")
 }
 
-export const RestaurantsDetailsPage = (navigate, id) => {
+export const goToRestaurantsDetailsPage = (navigate, id) => {
     navigate(`/restaurant/${id}`)
 }
 
-export const CartPage = (navigate) => {
+export const goToCartPage = (navigate) => {
     navigate("/cart")
 }
 
-export const EditAddressPage = (navigate) => {
+export const goToEditAddressPage = (navigate) => {
     navigate("/editaddress")
 }
 
-export const EditProfilePage = (navigate) => {
+export const goToEditProfilePage = (navigate) => {
     navigate("/editprofile")
 }
 
-export const ErrorPage = (navigate) => {
+export const goToErrorPage = (navigate) => {
     navigate("*")
+}
+
+export const goToBack = (navigate) => {
+    navigate(-1)
 }
