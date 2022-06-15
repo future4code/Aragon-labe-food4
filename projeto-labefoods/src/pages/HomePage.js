@@ -13,6 +13,8 @@ function HomePage() {
 
   const [ search, setSearch ] = useState("")
 
+  const [ filter, setFilter ] = useState("")
+
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token")
@@ -21,23 +23,20 @@ function HomePage() {
     if(!token) {
         goToLoginPage(navigate)
     }
+
   }, []);
 
   useEffect(() => {
-    getProfile();
+  getProfile(navigate)
     getRestaurants()
   },[]);
 
-//   useEffect(() => {
-//     if(profile.user?.hasAddress === true) {
-//         goToHomePage(navigate)
-//     } else if (profile.user?.hasAddress !== true) {
-//         goToAddressPage(navigate);
-//       }
-//   },[])
-
   const onChangeSearch = (e) => {
     setSearch(e.target.value)
+  }
+
+  const onChangeFilter = (e) => {
+    setFilter(e.target.value)
   }
 
   const showRestaurants = restaurants? restaurants
@@ -47,6 +46,13 @@ function HomePage() {
    const descriptionFiltered = restaurant.description.toLowerCase()
    return restaurantsFiltered.includes(textSearch) || descriptionFiltered.includes(textSearch)
   })
+  // .filter((restaurant) => {
+  //   if (filter) {
+  //     return restaurant.category === filter
+  //   } else {
+  //     return restaurant
+  //   }
+  // })
   .map((restaurant) => {
     return (
         <RestaurantCard
@@ -64,6 +70,18 @@ function HomePage() {
     value={search}
     onChange={onChangeSearch}
     />
+    
+    {/* <ul> */}
+      <input type="button" value={"Arabe"} onChange={onChangeFilter} placeholder="Árabe"/> 
+      {/* <li><input type="button">Asiática</input></li> 
+      <li><input type="button">Baiana</input></li>
+      <li><input type="button">Carnes</input></li> 
+      <li><input type="button">Hambúrguer</input></li> 
+      <li><input type="button">Italiana</input></li> 
+      <li><input type="button">Mexicana</input></li>
+      <li><input type="button">Petiscos</input></li>
+      <li><input type="button">Sorvetes</input></li>
+    </ul> */}
     {showRestaurants}
     </>
   )

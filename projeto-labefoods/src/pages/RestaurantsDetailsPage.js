@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import RestaurantCard from "../components/RestaurantCard"
+import RestaurantProductsCard from "../components/RestaurantProductsCard"
 import { GlobalStateContext } from "../global/GlobalStateContext"
 import { goToLoginPage } from "../routes/cordinator"
 
@@ -26,17 +27,15 @@ function RestaurantsDetailsPage() {
         getRestaurantDetails(params.id)
         console.log(details)
     }, [])
-
-    // const showDetails = () =>{
-    //     return(
-    //         <main>
-    //     <RestaurantCard
-    //     restaurant={details.restaurant}
-    //     />
-    //     </main>
-    //     )
-    // }
     
+    const showProducts = details.restaurant && details.restaurant.products.map((product) => {
+        return (
+            <RestaurantProductsCard
+            product={product} key = {product.id}
+            />
+        )
+    })
+
     return (
         <>
         {details.restaurant?.name}
@@ -44,8 +43,9 @@ function RestaurantsDetailsPage() {
         restaurant={details.restaurant}
         isDetail={true}
         />
-     {/* {showDetails} */}
+        {showProducts}
         </>
+
     )
 }
 

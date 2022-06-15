@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from "../constants/urls";
+import { goToAddressPage, goToHomePage } from "../routes/cordinator";
 import { convertCPF } from "../utils/convertCPF";
 import { GlobalStateContext } from "./GlobalStateContext";
 
@@ -58,12 +59,13 @@ function GlobalState(props) {
     }
   }
 
-  const postLogin = () => {
+  const postLogin = (navigate) => {
     axios
       .post(`${BASE_URL}/login`, login)
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
+        goToHomePage(navigate)
       })
       .catch((err) => {
         alert("Usuário ou senha inválidos");
@@ -102,15 +104,18 @@ function GlobalState(props) {
     addAddress: addAddress
   }
 
-  const getProfile = () => {
+  const getProfile = (navigate) => {
     axios.get(`${BASE_URL}/profile`, headers)
       .then((res) => {
-        setProfile(res.data)
-        console.log(res.data.user.hasAddress)
+        setProfile(res.data.user)
+        if(res.data.user.hasAddress === false) {
+          goToAddressPage(navigate);
+        }
       })
       .catch((err) => {
         console.log(err.response)
       })
+
   }
 
   const getRestaurants = () => {

@@ -20,8 +20,7 @@ function LoginPage() {
 
   const signIn = (e) => {
     e.preventDefault();
-    postLogin();
-    goToHomePage(navigate)
+    postLogin(navigate);
   };
 
   return (

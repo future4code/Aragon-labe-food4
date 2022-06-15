@@ -41,3 +41,7 @@ export const goToEditProfilePage = (navigate) => {
 export const goToErrorPage = (navigate) => {
     navigate("*")
 }
+
+export const goToBack = (navigate) => {
+    navigate(-1)
+}
