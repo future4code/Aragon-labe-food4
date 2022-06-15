@@ -30,13 +30,16 @@ function GlobalState(props) {
 
   const [ restaurants, setRestaurants ] = useState([])
 
+  const [details, setDetails] = useState({})
+
   const states = {
     login: login,
     signUp: signUp,
     checker: checker,
     address: address,
     profile: profile,
-    restaurants: restaurants
+    restaurants: restaurants,
+    details: details
   };
 
   const setters = {
@@ -122,9 +125,22 @@ function GlobalState(props) {
     })
   }
 
+const getRestaurantDetails = (id) => {
+  axios
+  .get(`${BASE_URL}/restaurants/${id}`, headers)
+  .then((res) => {
+    setDetails(res.data)
+    console.log(res.data)
+  })
+  .catch((err) => {
+    console.log(err.response)
+  })
+}
+
   const getters = {
     getProfile: getProfile,
-    getRestaurants: getRestaurants
+    getRestaurants: getRestaurants,
+    getRestaurantDetails: getRestaurantDetails
   }
 
   const context = { states, setters, posts, puts, getters };

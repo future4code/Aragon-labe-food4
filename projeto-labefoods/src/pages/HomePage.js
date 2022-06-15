@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RestaurantCard from "../components/RestaurantCard";
 import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToAddressPage, goToHomePage, goToLoginPage } from "../routes/cordinator";
+import { goToAddressPage, goToHomePage, goToLoginPage, goToRestaurantsDetailsPage } from "../routes/cordinator";
 
 function HomePage() {
   const context = useContext(GlobalStateContext);
@@ -49,9 +49,10 @@ function HomePage() {
   })
   .map((restaurant) => {
     return (
-        <RestaurantCard 
+        <RestaurantCard
         key={restaurant.id} 
         restaurant={restaurant}
+        isDetail = {false}
         />
     )
   }):<p>carregando...</p>
