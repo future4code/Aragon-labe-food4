@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { GlobalStateContext } from "../global/GlobalStateContext";
 import { goToHomePage } from "../routes/cordinator";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 function AddressPage() {
 
@@ -27,6 +28,7 @@ function AddressPage() {
 
     return (
         <>
+            <Header currentPage={"address"}/>
             <h2>Meu endereço</h2>
             <form onSubmit={saveAddress}>
                 <label htmlFor="street">

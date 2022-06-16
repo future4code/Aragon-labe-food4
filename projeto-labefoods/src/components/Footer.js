@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { goToCartPage, goToHomePage, goToProfilePage } from "../routes/cordinator";
 
 const FooterRappi = styled.footer`
 ul {
@@ -10,12 +12,15 @@ ul {
 `
 
 function Footer () {
+
+    const navigate = useNavigate()
+
     return (
         <FooterRappi>
             <ul>
-                <li><button>Home</button></li>
-                <li><button>Carrinho</button></li>
-                <li><button>Perfil</button></li>
+                <li><button onClick={() => goToHomePage(navigate)}>Home</button></li>
+                <li><button onClick={() => goToCartPage(navigate)}>Carrinho</button></li>
+                <li><button onClick={() => goToProfilePage(navigate)}>Perfil</button></li>
             </ul>
         </FooterRappi>
     )

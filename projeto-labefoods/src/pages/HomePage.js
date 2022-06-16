@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import RestaurantCard from "../components/RestaurantCard";
 import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToAddressPage, goToHomePage, goToLoginPage, goToRestaurantsDetailsPage } from "../routes/cordinator";
+import { goToLoginPage } from "../routes/cordinator";
 
 function HomePage() {
   const context = useContext(GlobalStateContext);
@@ -65,6 +67,7 @@ function HomePage() {
 
   return (
     <>
+    <Header currentPage={"home"}/>
     <input 
     placeholder="Pesquisar Restaurante" 
     value={search}
@@ -72,7 +75,7 @@ function HomePage() {
     />
     
     {/* <ul> */}
-      <input type="button" value={"Arabe"} onChange={onChangeFilter} placeholder="Árabe"/> 
+      {/* <input type="button" value={"Arabe"} onChange={onChangeFilter} placeholder="Árabe"/>  */}
       {/* <li><input type="button">Asiática</input></li> 
       <li><input type="button">Baiana</input></li>
       <li><input type="button">Carnes</input></li> 
@@ -83,6 +86,8 @@ function HomePage() {
       <li><input type="button">Sorvetes</input></li>
     </ul> */}
     {showRestaurants}
+
+    <Footer />
     </>
   )
 }

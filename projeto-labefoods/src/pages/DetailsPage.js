@@ -1,17 +1,21 @@
 import { useContext, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
 import RestaurantCard from "../components/RestaurantCard"
-import RestaurantProductsCard from "../components/RestaurantProductsCard"
+import ProductsCard from "../components/ProductsCard"
 import { GlobalStateContext } from "../global/GlobalStateContext"
 import { goToLoginPage } from "../routes/cordinator"
 
-function RestaurantsDetailsPage() {
+function DetailsPage() {
 
     const context = useContext(GlobalStateContext)
 
     const { getRestaurantDetails } = context.getters
 
-    const {details} = context.states
+    const {details, order} = context.states
+
+    const {setOrder} = context.setters
 
     const token = localStorage.getItem("token")
 
@@ -27,26 +31,43 @@ function RestaurantsDetailsPage() {
         getRestaurantDetails(params.id)
         console.log(details)
     }, [])
-    
+
+    const getProductOrder = (id, quantity) => {
+        const newOrder = {
+        products:    [   
+                ...order.products,
+                {
+                id: id,
+                quantity: quantity
+                }
+            ]
+        }
+        console.log(newOrder)
+    }
+
     const showProducts = details.restaurant && details.restaurant.products.map((product) => {
         return (
-            <RestaurantProductsCard
-            product={product} key = {product.id}
+            <ProductsCard
+            product={product} 
+            key={product.id}
+            getProductOrder={getProductOrder}
             />
         )
     })
 
     return (
         <>
-        {details.restaurant?.name}
+        <Header currentPage={"details"}/>
         <RestaurantCard
         restaurant={details.restaurant}
         isDetail={true}
         />
         {showProducts}
+
+        <Footer />
         </>
 
     )
 }
 
-export default RestaurantsDetailsPage
+export default DetailsPage
