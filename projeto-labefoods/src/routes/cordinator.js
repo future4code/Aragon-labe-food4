@@ -1,5 +1,6 @@
 export const goToHomePage = (navigate) => {
     navigate("/")
+    window.scrollTo(0,0)
 }
 
 export const goToSplashScreen = (navigate) => {
@@ -22,12 +23,12 @@ export const goToAddressPage = (navigate) => {
     navigate("/address")
 }
 
-export const goToRestaurantsDetailsPage = (navigate, id) => {
+export const goToDetailsPage = (navigate, id) => {
     navigate(`/restaurant/${id}`)
 }
 
 export const goToCartPage = (navigate) => {
-    navigate("/cart")
+    navigate("/cart")   
 }
 
 export const goToEditAddressPage = (navigate) => {
