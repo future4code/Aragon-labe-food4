@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToHomePage } from "../routes/cordinator";
+import { useContext, useEffect } from "react";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { goToProfilePage } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../../components/header/Header";
 
-function AddressPage() {
+function EditAddressPage() {
 
     const context = useContext(GlobalStateContext)
 
@@ -13,6 +13,8 @@ function AddressPage() {
     const { setAddress } = context.setters
 
     const { addAddress } = context.puts
+
+    const { getFullAddress } = context.getters
 
     const onChangeAddress = (e) => {
         setAddress({ ...address, [e.target.name]: e.target.value });
@@ -23,13 +25,16 @@ function AddressPage() {
     const saveAddress = (e) => {
         e.preventDefault()
         addAddress()
-        goToHomePage(navigate)
+        goToProfilePage(navigate)
     }
 
+    useEffect(() => {
+        getFullAddress()
+    }, [])
     return (
         <>
-            <Header currentPage={"address"}/>
-            <h2>Meu endereço</h2>
+            <Header currentPage={"edit-address"}/>
+            {/* <h2>Meu endereço</h2> */}
             <form onSubmit={saveAddress}>
                 <label htmlFor="street">
                     *Logradouro
@@ -39,7 +44,7 @@ function AddressPage() {
                     name="street"
                     value={address.street}
                     onChange={onChangeAddress}
-                    required
+                    // required
                 />
                 <br />
                 <label htmlFor="number">
@@ -50,7 +55,7 @@ function AddressPage() {
                     name="number"
                     value={address.number}
                     onChange={onChangeAddress}
-                    required
+                    // required
                 />
                 <br />
                 <label htmlFor="complement">
@@ -71,7 +76,7 @@ function AddressPage() {
                     name="neighbourhood"
                     value={address.neighbourhood}
                     onChange={onChangeAddress}
-                    required
+                    // required
                 />
                 <br />
                 <label htmlFor="city">
@@ -82,7 +87,7 @@ function AddressPage() {
                     name="city"
                     value={address.city}
                     onChange={onChangeAddress}
-                    required
+                    // required
                 />
                 <br />
                 <label htmlFor="state">
@@ -93,7 +98,7 @@ function AddressPage() {
                     name="state"
                     value={address.state}
                     onChange={onChangeAddress}
-                    required
+                    // required
                 />
                 <button type="submit">Salvar</button>
             </form>
@@ -101,4 +106,4 @@ function AddressPage() {
     )
 }
 
-export default AddressPage
+export default EditAddressPage

@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from "../constants/urls";
-import { goToAddressPage, goToHomePage } from "../routes/cordinator";
-import { convertCPF } from "../utils/convertCPF";
+import { goToAddressPage, goToHomePage, goToProfilePage } from "../routes/cordinator";
 import { GlobalStateContext } from "./GlobalStateContext";
 
 function GlobalState(props) {
@@ -11,7 +10,7 @@ function GlobalState(props) {
   const [signUp, setSignUp] = useState({
     name: "",
     email: "",
-    cpf: convertCPF(""),
+    cpf: "",
     password: "",
   });
 
@@ -32,9 +31,9 @@ function GlobalState(props) {
 
   const [details, setDetails] = useState({});
 
-  const [fullAddress, setFullAddress] = useState({});
+  const [orders , setOrders] = useState([])
 
-  const [order , setOrder] = useState([])
+  const [productQuantity, setProductQuantity] = useState("")
 
   const states = {
     login: login,
@@ -44,8 +43,8 @@ function GlobalState(props) {
     profile: profile,
     restaurants: restaurants,
     details: details,
-    fullAddress: fullAddress,
-    order: order
+    orders: orders,
+    productQuantity: productQuantity
   };
 
   const setters = {
@@ -54,8 +53,8 @@ function GlobalState(props) {
     setChecker: setChecker,
     setAddress: setAddress,
     setRestaurants: setRestaurants,
-    setFullAddress: setFullAddress,
-    setOrder: setOrder
+    setOrders: setOrders,
+    setProductQuantity: setProductQuantity
   };
 
   const token = localStorage.getItem("token");
@@ -104,8 +103,25 @@ function GlobalState(props) {
       });
   };
 
+  const updateProfile = (navigate) => {
+    const body = {
+      name: signUp.name,
+      email: signUp.email,
+      cpf: signUp.cpf
+    }
+    axios
+      .put(`${BASE_URL}/profile`, body, headers)
+      .then((res) => {
+        console.log(res.data)
+        goToProfilePage(navigate)
+
+      })
+      .catch((err) => {console.log(err)})
+  }
+
   const puts = {
     addAddress: addAddress,
+    updateProfile: updateProfile
   };
 
   const getProfile = (navigate) => {
@@ -151,7 +167,7 @@ function GlobalState(props) {
     axios
       .get(`${BASE_URL}/profile/address`, headers)
       .then((res) => {
-        setFullAddress(res.data);
+        setAddress(res.data.address);
         console.log(res.data)
       })
       .catch((err) => {
@@ -161,7 +177,7 @@ function GlobalState(props) {
 
   const postOrder = (id) => {
     axios
-    .post(`${BASE_URL}/restaurants/${id}/order`, order, headers)
+    .post(`${BASE_URL}/restaurants/${id}/order`, orders, headers)
     .then((res) => {
       console.log(res.data)
     })

@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToSignUpPage } from "../routes/cordinator";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { goToSignUpPage } from "../../routes/cordinator";
 import { Button } from '@mui/material';
+import { Login } from "./styled";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function LoginPage() {
   };
 
   return (
-    <>
+    <Login>
       <h1>Rappi4</h1>
       <p>Entrar</p>
 
@@ -55,7 +56,7 @@ function LoginPage() {
       <span>Não possui cadastro?</span>
       <br />
       <button onClick={() => goToSignUpPage(navigate)}> Clique aqui.</button>
-    </>
+    </Login>
   );
 }
 

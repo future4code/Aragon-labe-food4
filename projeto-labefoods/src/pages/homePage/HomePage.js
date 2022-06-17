@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import RestaurantCard from "../components/RestaurantCard";
-import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToLoginPage } from "../routes/cordinator";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { goToLoginPage } from "../../routes/cordinator";
 
 function HomePage() {
   const context = useContext(GlobalStateContext);

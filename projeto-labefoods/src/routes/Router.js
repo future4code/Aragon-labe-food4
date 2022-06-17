@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import SplashScreen from "../pages/SplashScreen";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/SignupPage";
-import ProfilePage from "../pages/ProfilePage";
-import AddressPage from "../pages/AddressPage";
-import DetailsPage from "../pages/DetailsPage";
-import CartPage from "../pages/CartPage";
-import EditAddressPage from "../pages/EditAddressPage";
-import EditProfilePage from "../pages/EditProfilePage";
-import ErrorPage from "../pages/ErrorPage";
+import HomePage from "../pages/homePage/HomePage";
+import SignupPage from "../pages/signupPage/SignupPage";
+import ProfilePage from "../pages/profilePage/ProfilePage";
+import AddressPage from "../pages/addressPage/AddressPage";
+import DetailsPage from "../pages/detailsPage/DetailsPage";
+import CartPage from "../pages/cartPage/CartPage";
+import EditAddressPage from "../pages/editAddressPage/EditAddressPage";
+import ErrorPage from "../pages/errorPage/ErrorPage";
+import SplashScreen from "../pages/splashScreen/SplashScreen";
+import LoginPage from "../pages/loginPage/LoginPage";
+import EditProfilePage from "../pages/editProfilPage/EditProfilePage";
 
 function Router() {
   return (

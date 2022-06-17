@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { goToDetailsPage } from "../routes/cordinator"
+import { goToDetailsPage } from "../../routes/cordinator"
 
 function RestaurantCard(props) {
 
