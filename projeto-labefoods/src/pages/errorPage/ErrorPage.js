@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { goToHomePage } from "../routes/cordinator"
+import { goToHomePage } from "../../routes/cordinator"
 
 function ErrorPage () {
 
@@ -13,7 +13,6 @@ function ErrorPage () {
     return (
         <>
        Página não encontrada. Você será redirecionado para HomePage em 3s!
-        
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { GlobalStateContext } from "../global/GlobalStateContext";
-import { goToAddressPage } from "../routes/cordinator";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { goToAddressPage } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {

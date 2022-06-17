@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { goToCartPage, goToHomePage, goToProfilePage } from "../routes/cordinator";
+import { goToCartPage, goToHomePage, goToProfilePage } from "../../routes/cordinator";
 
 const FooterRappi = styled.footer`
 ul {
