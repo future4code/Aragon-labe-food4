@@ -13,7 +13,7 @@ function CartPage () {
     const showOrders = orders.map((order) => {
         return(
             <section key={order.products.id}>
-                <img src = {order.products.photoUrl} width={"100px"}/>
+                <img src = {order.products.photoUrl} width={"100px"} alt={`imagem de ${order.products.name}`}/>
                 <p>{order.products.name}</p>
                 <p>{order.products.description}</p>
                 <p>{convertPrice(order.products?.price)}</p>
