@@ -4,8 +4,11 @@ import Footer from "../../components/footer/Footer"
 import Header from "../../components/header/Header"
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard"
 import ProductsCard from "../../components/productsCard/ProductsCard"
-import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { GlobalStateContext } from "../../global/GlobalStateContext"
 import { goToLoginPage } from "../../routes/cordinator"
+import { DetailsStyle } from "./Styled"
+import { Box, Container } from "@mui/material"
+import logo from "../../assets/logo-rappi4-invert3x.png"
 
 function DetailsPage() {
 
@@ -51,16 +54,27 @@ function DetailsPage() {
     })
 
     return (
-        <>
-        <Header currentPage={"details"}/>
-        <RestaurantCard
-        restaurant={details.restaurant}
-        isDetail={true}
-        />
-        {showProducts}
-        <Footer />
-        </>
-
+        <DetailsStyle>
+        <Container component="main" maxWidth="xs">
+          <img src={logo} alt="Logo do Rappi4" />
+  
+          <Box
+            sx={{
+              m: 2,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >         <Header currentPage={"details"}/>
+          <RestaurantCard
+          restaurant={details.restaurant}
+          isDetail={true}
+          />
+          {showProducts}
+          <Footer />
+            </Box>
+        </Container>
+      </DetailsStyle>
     )
 }
 

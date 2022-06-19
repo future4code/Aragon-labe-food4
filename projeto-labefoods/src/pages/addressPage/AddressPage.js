@@ -3,6 +3,9 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { goToHomePage } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
+import { AddressStyle } from "./Styled";
+import { Box, Container } from "@mui/material";
+import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function AddressPage() {
 
@@ -27,8 +30,18 @@ function AddressPage() {
     }
 
     return (
-        <>
-            <Header currentPage={"address"}/>
+        <AddressStyle>
+        <Container component="main" maxWidth="xs">
+          <img src={logo} alt="Logo do Rappi4" />
+  
+          <Box
+            sx={{
+              m: 2,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >            <Header currentPage={"address"}/>
             <h2>Meu endereço</h2>
             <form onSubmit={saveAddress}>
                 <label htmlFor="street">
@@ -97,8 +110,10 @@ function AddressPage() {
                 />
                 <button type="submit">Salvar</button>
             </form>
-        </>
-    )
+
+            </Box>
+        </Container>
+      </AddressStyle>    )
 }
 
 export default AddressPage

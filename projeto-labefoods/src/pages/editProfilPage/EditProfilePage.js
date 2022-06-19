@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { GlobalStateContext } from "../../global/GlobalStateContext"
 import Footer from "../../components/footer/Footer"
 import Header from "../../components/header/Header"
+import { EditProfileStyle } from "./styled"
+import { Box, Container } from "@mui/material"
+import logo from "../../assets/logo-rappi4-invert3x.png"
 
 
 function EditProfilePage() {
@@ -26,8 +29,19 @@ function EditProfilePage() {
     }
 
     return (
-        <>
-            <Header currentPage={"edit-profile"} />
+        <EditProfileStyle>
+        <Container component="main" maxWidth="xs">
+          <img src={logo} alt="Logo do Rappi4" />
+  
+          <Box
+            sx={{
+              m: 2,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+                        <Header currentPage={"edit-profile"} />
             <section>
                 <form onSubmit={updateUserData}>
                     <label htmlFor="name">Nome*</label>
@@ -68,8 +82,10 @@ function EditProfilePage() {
                 </form>
             </section>
             <Footer />
-        </>
-    )
+            </Box>
+        </Container>
+      </EditProfileStyle>
+    );
 }
 
 export default EditProfilePage
