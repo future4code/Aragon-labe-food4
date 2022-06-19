@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { goToSignUpPage } from "../../routes/cordinator";
-import { Button } from '@mui/material';
-import { Login } from "./styled";
+import { Button, Container, CssBaseline, TextField, ThemeProvider, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { LoginContainer } from "./styled";
+import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -26,37 +28,72 @@ function LoginPage() {
   };
 
   return (
-    <Login>
-      <h1>Rappi4</h1>
-      <p>Entrar</p>
+    <LoginContainer>
+      <Container component="main" maxWidth="xs">
+        
+        <img src={logo} alt="Logo do Rappi4" />
 
-      <form onSubmit={signIn}>
-        <label htmlFor="email">E-mail</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={login.email}
-          onChange={onChangeLogin}
-          required
-        />
-        <br />
-        <label htmlFor="password">Senha</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={login.password}
-          onChange={onChangeLogin}
-          required
-        />
-        <br />
-        <Button type="submit" variant="contained">Entrar</Button>
-      </form>
-      <span>Não possui cadastro?</span>
-      <br />
-      <button onClick={() => goToSignUpPage(navigate)}> Clique aqui.</button>
-    </Login>
+        <Box
+            sx={{
+              m:2,
+              display:"flex",
+              flexDirection: "column",
+              textAlign:"center",
+            }}>
+          <p>
+            <b>Entrar</b>
+          </p>
+
+          <Box component="form" onSubmit={signIn} sx={{ mt: 1 }}>
+
+            <TextField
+              margin="normal"
+              required
+              id="email"
+              label="email"
+              name="email"
+              autoComplete="email"
+              placeholder="email@email.com"
+              fullWidth
+              value={login.email}
+              onChange={onChangeLogin}
+              autoFocus
+            />
+
+            <TextField
+              margin="normal"
+              fullWidth
+              name="password"
+              type="password"
+              label="password"
+              id="senha"
+              placeholder="mínimo 6 caracteres"
+              autoComplete="digite seu email"
+              value={login.password}
+              onChange={onChangeLogin}
+              required
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, bgcolor: "#E86E5A", color: "#000000" }}
+            >
+              <b>Entrar</b>
+            </Button>
+
+            <Typography
+              component="h3"
+              sx={{ fontWeight: "bold" }}
+              onClick={() => goToSignUpPage(navigate)}
+            >
+              Não possui cadastro? Clique aqui.
+            </Typography>
+          </Box>
+          </Box>
+      </Container>
+    </LoginContainer>
   );
 }
 
