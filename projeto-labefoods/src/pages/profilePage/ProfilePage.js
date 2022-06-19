@@ -3,7 +3,10 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 import Header from "../../components/header/Header";
 import { goToEditAddressPage, goToEditProfilePage } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom"
-import Footer from "../../components/footer/Footer";
+// import Footer from "../../components/footer/Footer";
+import { ProfileStyle } from "./styled";
+import { Box, Container } from "@mui/material";
+import logo from "../../assets/logo-rappi4-invert3x.png";
 
 
 function ProfilePage () {
@@ -22,9 +25,19 @@ function ProfilePage () {
     },[])
 
     return (
-        <>
-        <Header currentPage={"profile"}/>
-
+        <ProfileStyle>
+        <Container component="main" maxWidth="xs">
+          <img src={logo} alt="Logo do Rappi4" />
+  
+          <Box
+            sx={{
+              m: 2,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+          <Header currentPage={"profile"}/>
         { profile ?
         <section key={profile.id}>
             <p>{profile.name}</p>
@@ -42,15 +55,13 @@ function ProfilePage () {
             <span> - {address.neighbourhood}</span>
             <button onClick={() => {goToEditAddressPage(navigate)}}>Editar</button>
         </section> : <p>Carregando...</p>}
-        
-        <section>
+        <footer>
+        </footer>
+            </Box>
+        </Container>
+      </ProfileStyle>
+    );
+  }
 
-        </section>
-
-        <Footer />
-
-        </>
-    )
-}
 
 export default ProfilePage 

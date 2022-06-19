@@ -5,6 +5,9 @@ import Header from "../../components/header/Header";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { goToLoginPage } from "../../routes/cordinator";
+import {HomeStyle} from "../homePage/styled";
+import { Box, Container } from "@mui/material";
+import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function HomePage() {
   const context = useContext(GlobalStateContext);
@@ -66,8 +69,18 @@ function HomePage() {
   }):<p>carregando...</p>
 
   return (
-    <>
-    <Header currentPage={"home"}/>
+    <HomeStyle>
+    <Container component="main" maxWidth="xs">
+      <img src={logo} alt="Logo do Rappi4" />
+
+      <Box
+        sx={{
+          m: 2,
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+        }}
+      >    <Header currentPage={"home"}/>
     <input 
     placeholder="Pesquisar Restaurante" 
     value={search}
@@ -88,8 +101,10 @@ function HomePage() {
     {showRestaurants}
 
     <Footer />
-    </>
-  )
-}
-
+                </Box>
+                </Container>
+              </HomeStyle>
+            );
+          }
+  
 export default HomePage;

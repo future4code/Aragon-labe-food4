@@ -3,6 +3,9 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { goToProfilePage } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
+import {EditAddressStyle} from "../editAddressPage/Styled"
+import { Box, Container } from "@mui/material";
+import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function EditAddressPage() {
 
@@ -31,9 +34,21 @@ function EditAddressPage() {
     useEffect(() => {
         getFullAddress()
     }, [])
+
     return (
-        <>
-            <Header currentPage={"edit-address"}/>
+        <EditAddressStyle>
+        <Container component="main" maxWidth="xs">
+      <img src={logo} alt="Logo do Rappi4" />
+
+      <Box
+        sx={{
+          m: 2,
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+        }}
+      >
+        <Header currentPage={"edit-address"}/>
             {/* <h2>Meu endereço</h2> */}
             <form onSubmit={saveAddress}>
                 <label htmlFor="street">
@@ -102,8 +117,10 @@ function EditAddressPage() {
                 />
                 <button type="submit">Salvar</button>
             </form>
-        </>
-    )
+            </Box>
+        </Container>
+      </EditAddressStyle>
+    );
 }
 
 export default EditAddressPage

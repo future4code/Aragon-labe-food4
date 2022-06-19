@@ -3,6 +3,9 @@ import Footer from "../../components/footer/Footer"
 import Header from "../../components/header/Header"
 import { GlobalStateContext } from "../../global/GlobalStateContext"
 import { convertPrice } from "../../utils/convertPrice"
+import { CartStyle } from "./Styled"
+import { Box, Container } from "@mui/material"
+import logo from "../../assets/logo-rappi4-invert3x.png"
 
 
 function CartPage () {
@@ -22,8 +25,19 @@ function CartPage () {
         )
     })
     return (
-        <>
-        <Header currentPage={"cart"}/>
+        <CartStyle>
+        <Container component="main" maxWidth="xs">
+          <img src={logo} alt="Logo do Rappi4" />
+  
+          <Box
+            sx={{
+              m: 2,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+<Header currentPage={"cart"}/>
         {/* {orders.products &&
         <div>
 
@@ -35,8 +49,10 @@ function CartPage () {
         } */}
         {showOrders}
         <Footer />
-        </>
-    )
+        </Box>
+        </Container>
+      </CartStyle>        
+    );
 }
 
 export default CartPage
