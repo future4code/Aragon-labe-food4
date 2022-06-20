@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import { EditAddressStyle } from "../editAddressPage/Styled";
 import { Box, Button, Container, TextField } from "@mui/material";
-import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function EditAddressPage() {
   const context = useContext(GlobalStateContext);
@@ -37,7 +36,6 @@ function EditAddressPage() {
   return (
     <EditAddressStyle>
       <Container component="main" maxWidth="xs">
-        <img src={logo} alt="Logo do Rappi4" />
 
         <Box
           sx={{

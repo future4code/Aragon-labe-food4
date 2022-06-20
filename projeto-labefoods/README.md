@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+Projeto Labefood - Rappi4
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Grupo 04: Pamela, Samuel, Sophia e Thiago Vernizzi.
 
-## Available Scripts
+### O QUE NÃO FUNCIONA:
 
-In the project directory, you can run:
+### Análise do Fluxo de Login/Cadastro
 
-### `npm start`
+- O usuário pode fazer o login, caso já esteja cadastrado.
+- O usuário pode criar uma conta, cadastrando seus dados pessoais e seu endereço.
+- Caso insira alguma informação incorreta ou deixe de inserir alguma informação obrigatória, o usuário deve receber uma mensagem de erro clara.
+- Após finalizar o cadastro, o usuário deve ser redirecionado para a tela de lista de restaurantes (HomePage).
+- O design dessas telas está dentro do modelo proposto, utilizando Material UI.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Busca e Seleção de Restaurantes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- O usuário pode acessar uma lista com todos os restaurantes.
+- O usuário pode buscar um restaurante por nome ou descrição.
+- O usuário pode clicar no card de um restaurante para exibir na tela o seu cardápio.
+- O design dessas telas está dentro do modelo proposto, utilizando Material UI.
 
-### `npm test`
+### Cardápio do Restaurante
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- O usuário pode acessar as informações do restaurante, como foto, nome, tipo, tempo de entrega, frete, endereço.
+- O usuário pode acessar as informações de cada prato, como foto, nome, descrição, preço.
+- O usuário pode adicionar pratos no carrinho e selecionar a quantidade de cada prato.
+- O usuário pode remover itens do carrinho.
+- O design dessa tela está dentro do modelo proposto.
 
-### `npm run build`
+### Carrinho e Finalizar Compra
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- O usuário pode acessar a lista de itens que adicionou ao carrinho. 
+- O design dessa tela está dentro do modelo proposto (parcial).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Perfil, Editar Perfil e Histórico de Pedidos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- O usuário pode acessar seus dados pessoais e endereço.
+- O usuário pode editar seus dados pessoais e endereço.
+- Ao editar as informações, caso insira alguma informação incorreta ou deixe de inserir alguma informação obrigatória, o usuário deve receber uma mensagem de erro clara.
+- O design dessas telas está dentro do modelo proposto (parcial).
 
-### `npm run eject`
+### O QUE NÃO FUNCIONA (próximas features):
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- O usuário não conseguee filtrar os restaurantes por categoria.
+- O usuário não pode acessar os pratos do restaurante, divididos em categorias. Como exemplos, existem pratos que são do tipo principais, outros sobremesas, outras entradas.
+- Caso não tenha adicionado nenhum item, não será exibida uma mensagem de "Carrinho Vazio".
+- O endereço de entrega não é exibido para o usuário no topo da tela.
+- O preço total da compra, corretamente calculado de acordo com o preço e quantidade de cada item adicionado, não é exibido para o usuário.
+- O usuário não pode selecionar uma forma de pagamento dentre as opções de cartão e dinheiro.
+- O usuário não pode concluir um pedido e, ao fazê-lo, um banner de "Pedido em Andamento" com os dados do pedido (esse banner fica ativo durante X minutos, sendo X o tempo de entrega do restaurante) não é exibido para o mesmo.
+- O usuário não pode acessar o seu histórico de pedidos concluídos, após o tempo de entrega do estabelecimento, o pedido do usuário não está sendo incluído nesta lista.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Link do Surge: rappi4-project.surge.sh
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Prints:

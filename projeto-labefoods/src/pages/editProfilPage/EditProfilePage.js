@@ -5,7 +5,6 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { EditProfileStyle } from "./styled";
 import { Box, Button, Container, TextField } from "@mui/material";
-import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function EditProfilePage() {
   const context = useContext(GlobalStateContext);
@@ -28,7 +27,6 @@ function EditProfilePage() {
   return (
     <EditProfileStyle>
       <Container component="main" maxWidth="xs">
-        <img src={logo} alt="Logo do Rappi4" />
 
         <Box
           sx={{
@@ -94,7 +92,7 @@ function EditProfilePage() {
               <b>Cadastrar</b>
             </Button>
           </Box>
-          <Footer />
+          
         </Box>
       </Container>
     </EditProfileStyle>
