@@ -16,7 +16,7 @@ function CartPage () {
     const showOrders = orders.map((order) => {
         return(
             <section key={order.products.id}>
-                <img src = {order.products.photoUrl} width={"100px"} alt={`imagem de ${order.products.name}`}/>
+                <img src = {order.products.photoUrl} alt={`imagem de ${order.products.name}`}/>
                 <p>{order.products.name}</p>
                 <p>{order.products.description}</p>
                 <p>{convertPrice(order.products?.price)}</p>
@@ -27,7 +27,6 @@ function CartPage () {
     return (
         <CartStyle>
         <Container component="main" maxWidth="xs">
-          <img src={logo} alt="Logo do Rappi4" />
   
           <Box
             sx={{
@@ -38,7 +37,7 @@ function CartPage () {
             }}
           >
 <Header currentPage={"cart"}/>
-        {/* {orders.products &&
+        {orders.products &&
         <div>
 
         <img src={orders.products.photoUrl} width={"100px"}/>
@@ -46,11 +45,14 @@ function CartPage () {
         <p>{orders.products.description}</p>
         <p>{convertPrice(orders.products.price)}</p>
         </div>
-        } */}
+        }
+        <section className="container__cart-order">
         {showOrders}
-        <Footer />
+        </section>
+       
         </Box>
         </Container>
+        <Footer /> 
       </CartStyle>        
     );
 }

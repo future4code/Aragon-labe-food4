@@ -20,7 +20,7 @@ function Header(props) {
       case "details":
         return(
           <>
-            <h3>Restaurante</h3>
+            <h3>Rappi4</h3>
             <button onClick={()=> goToBack(navigate)}> Voltar </button>
           </>
           );
