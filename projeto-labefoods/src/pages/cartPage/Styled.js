@@ -5,15 +5,16 @@ export const CartStyle = styled.main`
 
 .container__cart-order {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 320px;
     margin-top: 20px;
     gap: 20px;
     border: 1px solid lightgray;
     border-radius: 5px;
+    text-align: center;
 }
 
-img {
-   margin: 20px;
-   width: 300px;
+.container__cart-order img {
+    width: 300px;
+    margin: 20px;
 }
 `

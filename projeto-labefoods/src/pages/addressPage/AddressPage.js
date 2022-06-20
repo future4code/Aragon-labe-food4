@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import { AddressStyle } from "./Styled";
 import { Box, Button, Container, TextField } from "@mui/material";
-import logo from "../../assets/logo-rappi4-invert3x.png";
+import CartPage from "../cartPage/CartPage";
 
 function AddressPage() {
   const context = useContext(GlobalStateContext);
@@ -31,7 +31,6 @@ function AddressPage() {
   return (
     <AddressStyle>
       <Container component="main" maxWidth="xs">
-        <img src={logo} alt="Logo do Rappi4" />
 
         <Box
           sx={{
