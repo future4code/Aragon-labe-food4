@@ -52,7 +52,7 @@ Grupo 04: Pamela, Samuel, Sophia e Thiago Vernizzi.
 - O usuário não pode concluir um pedido e, ao fazê-lo, um banner de "Pedido em Andamento" com os dados do pedido (esse banner fica ativo durante X minutos, sendo X o tempo de entrega do restaurante) não é exibido para o mesmo.
 - O usuário não pode acessar o seu histórico de pedidos concluídos, após o tempo de entrega do estabelecimento, o pedido do usuário não está sendo incluído nesta lista.
 
-Link do Surge: rappi4-project.surge.sh
+Link do Surge: project-rappi4.surge.sh
 
 Prints:
 <img width="155" alt="image" src="https://user-images.githubusercontent.com/95821657/174526424-f7e39d12-a0a7-422a-81db-f5f0295c0d23.png">
