@@ -3,124 +3,150 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { goToProfilePage } from "../../routes/cordinator";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
-import {EditAddressStyle} from "../editAddressPage/Styled"
-import { Box, Container } from "@mui/material";
+import { EditAddressStyle } from "../editAddressPage/Styled";
+import { Box, Button, Container, TextField } from "@mui/material";
 import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function EditAddressPage() {
+  const context = useContext(GlobalStateContext);
 
-    const context = useContext(GlobalStateContext)
+  const { address } = context.states;
 
-    const { address } = context.states
+  const { setAddress } = context.setters;
 
-    const { setAddress } = context.setters
+  const { addAddress } = context.puts;
 
-    const { addAddress } = context.puts
+  const { getFullAddress } = context.getters;
 
-    const { getFullAddress } = context.getters
+  const onChangeAddress = (e) => {
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  };
 
-    const onChangeAddress = (e) => {
-        setAddress({ ...address, [e.target.name]: e.target.value });
-    };
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const saveAddress = (e) => {
+    e.preventDefault();
+    addAddress();
+    goToProfilePage(navigate);
+  };
 
-    const saveAddress = (e) => {
-        e.preventDefault()
-        addAddress()
-        goToProfilePage(navigate)
-    }
+  useEffect(() => {
+    getFullAddress();
+  }, []);
 
-    useEffect(() => {
-        getFullAddress()
-    }, [])
+  return (
+    <EditAddressStyle>
+      <Container component="main" maxWidth="xs">
+        <img src={logo} alt="Logo do Rappi4" />
 
-    return (
-        <EditAddressStyle>
-        <Container component="main" maxWidth="xs">
-      <img src={logo} alt="Logo do Rappi4" />
+        <Box
+          sx={{
+            m: 2,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+          }}
+        >
+          <Header currentPage={"edit-address"} />
 
-      <Box
-        sx={{
-          m: 2,
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-        }}
-      >
-        <Header currentPage={"edit-address"}/>
-            {/* <h2>Meu endereço</h2> */}
-            <form onSubmit={saveAddress}>
-                <label htmlFor="street">
-                    *Logradouro
-                </label>
-                <input
-                    id="street"
-                    name="street"
-                    value={address.street}
-                    onChange={onChangeAddress}
-                    // required
-                />
-                <br />
-                <label htmlFor="number">
-                    *Número
-                </label>
-                <input
-                    id="number"
-                    name="number"
-                    value={address.number}
-                    onChange={onChangeAddress}
-                    // required
-                />
-                <br />
-                <label htmlFor="complement">
-                    Complemento
-                </label>
-                <input
-                    id="complement"
-                    name="complement"
-                    value={address.complement}
-                    onChange={onChangeAddress}
-                />
-                <br />
-                <label htmlFor="neighbourhood">
-                    *Bairro
-                </label>
-                <input
-                    id="neighbourhood"
-                    name="neighbourhood"
-                    value={address.neighbourhood}
-                    onChange={onChangeAddress}
-                    // required
-                />
-                <br />
-                <label htmlFor="city">
-                    *Cidade
-                </label>
-                <input
-                    id="city"
-                    name="city"
-                    value={address.city}
-                    onChange={onChangeAddress}
-                    // required
-                />
-                <br />
-                <label htmlFor="state">
-                    *Estado
-                </label>
-                <input
-                    id="state"
-                    name="state"
-                    value={address.state}
-                    onChange={onChangeAddress}
-                    // required
-                />
-                <button type="submit">Salvar</button>
-            </form>
-            </Box>
-        </Container>
-      </EditAddressStyle>
-    );
+          <Box component="form" onSubmit={saveAddress} sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              id="Rua"
+              label="Rua"
+              name="street"
+              autoComplete="street"
+              placeholder="Rua / Av."
+              fullWidth
+              value={address.street}
+              onChange={onChangeAddress}
+              autoFocus
+            />
+
+            <TextField
+              margin="normal"
+              required
+              id="Número"
+              label="Número"
+              name="number"
+              autoComplete="number"
+              placeholder="Número"
+              fullWidth
+              value={address.number}
+              onChange={onChangeAddress}
+              autoFocus
+            />
+
+            <TextField
+              margin="normal"
+              required
+              id="Complemento"
+              label="Complemento"
+              name="complement"
+              autoComplete
+              fullWidth
+              placeholder="Apto. / Bloco"
+              value={address.complement}
+              onChange={onChangeAddress}
+              autoFocus
+            />
+
+            <TextField
+              margin="normal"
+              required
+              id="Bairro"
+              label="Bairro"
+              name="neighbourhood"
+              autoComplete
+              fullWidth
+              placeholder="Bairro"
+              value={address.neighbourhood}
+              onChange={onChangeAddress}
+              autoFocus
+            />
+
+            <TextField
+              margin="normal"
+              required
+              id="Cidade"
+              label="Cidade"
+              name="city"
+              autoComplete
+              fullWidth
+              placeholder="Cidade"
+              value={address.city}
+              onChange={onChangeAddress}
+              autoFocus
+            />
+
+            <TextField
+              margin="normal"
+              required
+              id="Estado"
+              label="Estado"
+              name="state"
+              autoComplete
+              fullWidth
+              placeholder="Estado"
+              value={address.state}
+              onChange={onChangeAddress}
+              autoFocus
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, bgcolor: "#E86E5A", color: "#000000" }}
+            >
+              <b>Salvar</b>
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </EditAddressStyle>
+  );
 }
 
-export default EditAddressPage
+export default EditAddressPage;

@@ -1,15 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { goToCartPage, goToHomePage, goToProfilePage } from "../../routes/cordinator";
-
-const FooterRappi = styled.footer`
-ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px
-}
-`
+import home from "../../assets/home.png"
+import cart from "../../assets/cart.png"
+import profile from "../../assets/profile.png"
+import { FooterRappi } from "./styled";
 
 function Footer () {
 
@@ -17,11 +12,11 @@ function Footer () {
 
     return (
         <FooterRappi>
-            <ul>
-                <li><button onClick={() => goToHomePage(navigate)}>Home</button></li>
-                <li><button onClick={() => goToCartPage(navigate)}>Carrinho</button></li>
-                <li><button onClick={() => goToProfilePage(navigate)}>Perfil</button></li>
-            </ul>
+            
+                <img width={"20px"} src={home}onClick={() => goToHomePage(navigate)} />
+                <img width={"20px"} src={cart} onClick={() => goToCartPage(navigate)} />
+                <img width={"20px"} src={profile} onClick={() => goToProfilePage(navigate)} />
+
         </FooterRappi>
     )
 }

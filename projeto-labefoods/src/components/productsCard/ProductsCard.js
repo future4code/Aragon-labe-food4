@@ -1,6 +1,8 @@
+import { Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { convertPrice } from "../../utils/convertPrice";
+import { CardStyle } from "./styled";
 
 function ProductsCard(props) {
     const [isModal, setIsModal] = useState(false)
@@ -32,17 +34,15 @@ function ProductsCard(props) {
     }
 
     return (
-        <section>
-            <img src={props.product.photoUrl} width={"50px"} alt={`foto de ${props.product.name}`} />
+        <CardStyle>
+            <img src={props.product.photoUrl} alt={`foto de ${props.product.name}`} />
             <h3>{props.product.name}</h3>
             <p>{props.product.description}</p>
             <p>{convertPrice(props.product.price)}</p>
 
-            <button onClick={
+            <Button variant="outlined" onClick={
                 toggleModal
-                } >
-                Adicionar ao Carrinho
-            </button>
+                }>Adicionar ao Carrinho</Button>
             
             {
                 isModal &&
@@ -62,7 +62,7 @@ function ProductsCard(props) {
             }
             {/* <p>Quantidade</p>
             <button>-</button> */}
-        </section>
+        </CardStyle>
     )
 }
 

@@ -1,91 +1,104 @@
-import { useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import { GlobalStateContext } from "../../global/GlobalStateContext"
-import Footer from "../../components/footer/Footer"
-import Header from "../../components/header/Header"
-import { EditProfileStyle } from "./styled"
-import { Box, Container } from "@mui/material"
-import logo from "../../assets/logo-rappi4-invert3x.png"
-
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import { EditProfileStyle } from "./styled";
+import { Box, Button, Container, TextField } from "@mui/material";
+import logo from "../../assets/logo-rappi4-invert3x.png";
 
 function EditProfilePage() {
+  const context = useContext(GlobalStateContext);
 
-    const context = useContext(GlobalStateContext)
+  const { signUp } = context.states;
 
-    const { signUp } = context.states
+  const { setSignUp } = context.setters;
 
-    const { setSignUp } = context.setters;
+  const { updateProfile } = context.puts;
 
+  const onChangeSignUp = (e) => {
+    setSignUp({ ...signUp, [e.target.name]: e.target.value });
+  };
+  const navigate = useNavigate();
+  const updateUserData = (e) => {
+    e.preventDefault();
+    updateProfile(navigate);
+  };
 
-    const { updateProfile } = context.puts
+  return (
+    <EditProfileStyle>
+      <Container component="main" maxWidth="xs">
+        <img src={logo} alt="Logo do Rappi4" />
 
-    const onChangeSignUp = (e) => {
-        setSignUp({ ...signUp, [e.target.name]: e.target.value });
-      };
-      const navigate = useNavigate()
-    const updateUserData = (e) => {
-        e.preventDefault()
-        updateProfile(navigate)
-    }
+        <Box
+          sx={{
+            m: 2,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+          }}
+        >
+          <Header currentPage={"edit-profile"} />
 
-    return (
-        <EditProfileStyle>
-        <Container component="main" maxWidth="xs">
-          <img src={logo} alt="Logo do Rappi4" />
-  
-          <Box
-            sx={{
-              m: 2,
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "center",
-            }}
-          >
-                        <Header currentPage={"edit-profile"} />
-            <section>
-                <form onSubmit={updateUserData}>
-                    <label htmlFor="name">Nome*</label>
-                    <input
-                        id="name"
-                        placeholder="Nome completo"
-                        name="name"
-                        value={signUp.name}
-                        onChange={onChangeSignUp}
-                        required
-                    />
+          <Box component="form" onSubmit={updateUserData} sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              id="name"
+              label="nome"
+              name="name"
+              autoComplete="name"
+              placeholder="Nome e sobrenome"
+              fullWidth
+              value={signUp.name}
+              onChange={onChangeSignUp}
+              autoFocus
+            />
 
-                    <br />
-                    <label htmlFor="email">Email*</label>
-                    <input
-                        id="email"
-                        placeholder="E-mail"
-                        name="email"
-                        type="email"
-                        value={signUp.email}
-                        onChange={onChangeSignUp}
-                        required
-                    />
-                    <br />
+            <TextField
+              margin="normal"
+              required
+              id="email"
+              label="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="email@email.com"
+              fullWidth
+              value={signUp.email}
+              onChange={onChangeSignUp}
+              autoFocus
+            />
 
-                    <label htmlFor="cpf">CPF*</label>
-                    <input
-                        pattern=""
-                        id="cpf"
-                        placeholder="Somente números"
-                        name="cpf"
-                        type="number"
-                        value={signUp.cpf}
-                        onChange={onChangeSignUp}
-                        required
-                    />
-                    <button>Atualizar</button>
-                </form>
-            </section>
-            <Footer />
-            </Box>
-        </Container>
-      </EditProfileStyle>
-    );
+            <TextField
+              margin="normal"
+              required
+              id="email"
+              label="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Confirme o email anterior"
+              fullWidth
+              value={signUp.email}
+              onChange={onChangeSignUp}
+              autoFocus
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, bgcolor: "#E86E5A", color: "#000000" }}
+            >
+              <b>Cadastrar</b>
+            </Button>
+          </Box>
+          <Footer />
+        </Box>
+      </Container>
+    </EditProfileStyle>
+  );
 }
 
-export default EditProfilePage
+export default EditProfilePage;

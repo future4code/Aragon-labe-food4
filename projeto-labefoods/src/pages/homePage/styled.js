@@ -1,11 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const HomeStyle = styled.main`
-    text-align: center;
-
-img {
-  width: 104px;
-  height: 58px;
-  margin: 68px 128px 16px;
-  object-fit: contain;
-}`
+  .container__card-restaurant {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+    gap: 20px;
+  } 
+`;
