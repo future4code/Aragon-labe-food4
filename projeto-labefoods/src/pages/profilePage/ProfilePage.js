@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { ProfileStyle } from "./styled";
 import { Box, Container } from "@mui/material";
 import logo from "../../assets/logo-rappi4-invert3x.png";
+import Footer from "../../components/footer/Footer";
 
 
 function ProfilePage () {
@@ -59,6 +60,7 @@ function ProfilePage () {
         </footer>
             </Box>
         </Container>
+        <Footer />
       </ProfileStyle>
     );
   }

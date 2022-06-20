@@ -6,6 +6,7 @@ import Header from "../../components/header/Header";
 import { AddressStyle } from "./Styled";
 import { Box, Button, Container, TextField } from "@mui/material";
 import CartPage from "../cartPage/CartPage";
+import Footer from "../../components/footer/Footer";
 
 function AddressPage() {
   const context = useContext(GlobalStateContext);
@@ -138,6 +139,7 @@ function AddressPage() {
           </Box>
         </Box>
       </Container>
+      <Footer />
     </AddressStyle>
   );
 }

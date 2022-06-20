@@ -92,7 +92,7 @@ function EditProfilePage() {
               <b>Cadastrar</b>
             </Button>
           </Box>
-          <Footer />
+          
         </Box>
       </Container>
     </EditProfileStyle>
