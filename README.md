@@ -4,7 +4,7 @@ Projeto Labefood - Rappi4
 
 Grupo 04: Pamela, Samuel, Sophia e Thiago Vernizzi.
 
-### O QUE NÃO FUNCIONA:
+### O QUE FUNCIONA:
 
 ### Análise do Fluxo de Login/Cadastro
 
