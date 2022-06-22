@@ -1,5 +1,3 @@
-### Projeto LabeFood
-
 Projeto Labefood - Rappi4
 
 Grupo 04: Pamela, Samuel, Sophia e Thiago Vernizzi.
@@ -52,22 +50,6 @@ Grupo 04: Pamela, Samuel, Sophia e Thiago Vernizzi.
 - O usuário não pode concluir um pedido e, ao fazê-lo, um banner de "Pedido em Andamento" com os dados do pedido (esse banner fica ativo durante X minutos, sendo X o tempo de entrega do restaurante) não é exibido para o mesmo.
 - O usuário não pode acessar o seu histórico de pedidos concluídos, após o tempo de entrega do estabelecimento, o pedido do usuário não está sendo incluído nesta lista.
 
-Link do Surge: project-rappi4.surge.sh
+Link do Surge: rappi4-project.surge.sh
 
 Prints:
-<img width="155" alt="image" src="https://user-images.githubusercontent.com/95821657/174526424-f7e39d12-a0a7-422a-81db-f5f0295c0d23.png">
-<img width="157" alt="image" src="https://user-images.githubusercontent.com/95821657/174526106-1c5cf3dc-dd77-44e4-b199-b481ac0a9bfd.png">
-<img width="155" alt="image" src="https://user-images.githubusercontent.com/95821657/174526283-8b1ee19c-b57f-48b1-8a55-cb5d905e7fd4.png">
-<img width="153" alt="image" src="https://user-images.githubusercontent.com/95821657/174526173-47086823-dd1d-43a8-b4e1-af740f08fb06.png">
-<img width="229" alt="image" src="https://user-images.githubusercontent.com/95821657/174526500-9a1f312b-a6b5-41de-9a54-83aa8c175bde.png">
-<img width="152" alt="image" src="https://user-images.githubusercontent.com/95821657/174526646-b48b399b-6405-47cf-89a2-ed287e741be6.png">
-<img width="154" alt="image" src="https://user-images.githubusercontent.com/95821657/174526746-3a32fc0d-3255-42b1-a7de-c607afbf0c8d.png">
-<img width="154" alt="image" src="https://user-images.githubusercontent.com/95821657/174526791-80fc00d9-f933-427f-83a4-6c7a99d226cb.png">
-<img width="155" alt="image" src="https://user-images.githubusercontent.com/95821657/174527028-c2b6c038-0cc2-4429-8823-f16e5383fa8c.png">
-<img width="155" alt="image" src="https://user-images.githubusercontent.com/95821657/174527125-e1be3db5-3d37-471e-b39b-84c23c3bc74a.png">
-<img width="155" alt="image" src="https://user-images.githubusercontent.com/95821657/174527178-6a1f97da-4444-4cea-b202-c21cca0076fb.png">
-
-
-
-
-
